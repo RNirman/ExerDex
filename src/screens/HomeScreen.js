@@ -11,6 +11,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import DraggableFlatList, { ScaleDecorator } from 'react-native-draggable-flatlist';
 
 export default function HomeScreen({ navigation }) {
   const [exercises, setExercises] = useState([]);
@@ -51,49 +52,79 @@ export default function HomeScreen({ navigation }) {
     );
   };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.cardImage} />
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{item.name}</Text>
-        <Text numberOfLines={2} style={styles.description}>
-          {item.description}
-        </Text>
-      </View>
-      <TouchableOpacity onPress={() => deleteExercise(item.id)} style={styles.deleteBtn}>
-        <Ionicons name="trash-outline" size={24} color="#FF3B30" />
-      </TouchableOpacity>
-    </View>
-  );
+  const renderItem = ({ item, drag, isActive }) => {
+      return (
+        <ScaleDecorator>
+          <TouchableOpacity
+            onLongPress={drag}
+            onPress={() => navigation.navigate('ExerciseDetail', { exercise: item })}
+            disabled={isActive}
+            style={[
+              styles.card,
+              { backgroundColor: isActive ? '#f0f8ff' : '#fff' }
+            ]}
+          >
+            <Image source={{ uri: item.image }} style={styles.cardImage} />
+
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{item.name}</Text>
+              <Text numberOfLines={2} style={styles.description}>
+                {item.description}
+              </Text>
+            </View>
+
+            <View style={styles.actions}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EditExercise', { exercise: item })}
+                style={styles.actionBtn}
+              >
+                <Ionicons name="pencil" size={24} color="#007AFF" />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => deleteExercise(item.id)}
+                style={styles.actionBtn}
+              >
+                <Ionicons name="trash-outline" size={24} color="#FF3B30" />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        </ScaleDecorator>
+      );
+    };
 
   return (
     <View style={styles.container}>
-      {exercises.length === 0 ? (
-        <View style={styles.emptyState}>
-          <Text style={styles.emptyText}>No exercises added yet.</Text>
-          <Text style={styles.emptySubText}>Tap + to add your first one!</Text>
-        </View>
-      ) : (
-        <FlatList
-          data={exercises}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-          contentContainerStyle={styles.listContent}
-        />
-      )}
+          <DraggableFlatList
+            data={exercises}
+            onDragEnd={async ({ data }) => {
+              setExercises(data);
+              await AsyncStorage.setItem('exercises', JSON.stringify(data)); // Save new order
+            }}
+            keyExtractor={(item) => item.id}
+            renderItem={renderItem}
+            contentContainerStyle={styles.listContent}
+          />
 
-      {/* Floating Action Button (FAB) to Add New */}
-      <TouchableOpacity
-        style={styles.fab}
-        onPress={() => navigation.navigate('AddExercise')}
-      >
-        <Ionicons name="add" size={30} color="#fff" />
-      </TouchableOpacity>
-    </View>
+          <TouchableOpacity
+            style={styles.fab}
+            onPress={() => navigation.navigate('AddExercise')}
+          >
+            <Ionicons name="add" size={30} color="#fff" />
+          </TouchableOpacity>
+        </View>
   );
 }
 
 const styles = StyleSheet.create({
+  actions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionBtn: {
+    padding: 10,
+    marginLeft: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
