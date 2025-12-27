@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
             disabled={isActive}
             style={[
               styles.card,
-              { backgroundColor: isActive ? '#f0f8ff' : '#fff' }
+              { backgroundColor: isActive ? '#333' : '#1E1E1E' }
             ]}
           >
             <Image source={{ uri: item.image }} style={styles.cardImage} />
@@ -78,14 +78,14 @@ export default function HomeScreen({ navigation }) {
                 onPress={() => navigation.navigate('EditExercise', { exercise: item })}
                 style={styles.actionBtn}
               >
-                <Ionicons name="pencil" size={24} color="#007AFF" />
+                <Ionicons name="pencil" size={22} color="#0A84FF" />
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => deleteExercise(item.id)}
                 style={styles.actionBtn}
               >
-                <Ionicons name="trash-outline" size={24} color="#FF3B30" />
+                <Ionicons name="trash-outline" size={22} color="#FF453A" />
               </TouchableOpacity>
             </View>
           </TouchableOpacity>
@@ -122,36 +122,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   actionBtn: {
-    padding: 10,
-    marginLeft: 5,
-  },
+      padding: 8,
+      marginLeft: 4,
+      backgroundColor: '#2C2C2E',
+      borderRadius: 8,
+    },
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#121212',
   },
   listContent: {
     padding: 20,
+    paddingBottom: 100,
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    marginBottom: 15,
-    padding: 10,
+    borderRadius: 16,
+    marginBottom: 16,
+    padding: 12,
     alignItems: 'center',
-    // Shadow for iOS
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    // Shadow for Android
-    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#333',
   },
   cardImage: {
     width: 60,
     height: 60,
-    borderRadius: 8,
-    backgroundColor: '#eee',
+    borderRadius: 12,
+    backgroundColor: '#333',
   },
   textContainer: {
     flex: 1,
@@ -161,11 +158,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#FFFFFF',
+    marginBottom: 4,
   },
   description: {
     fontSize: 14,
-    color: '#666',
+    color: '#AAAAAA',
     marginTop: 4,
   },
   deleteBtn: {
@@ -190,16 +188,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 30,
     right: 30,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#0A84FF',
     width: 60,
     height: 60,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 8,
   },
 });

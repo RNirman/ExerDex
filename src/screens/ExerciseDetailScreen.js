@@ -36,7 +36,6 @@ export default function ExerciseDetailScreen({ route }) {
       setSeconds(0);
     };
 
-    // Helper to format 65 seconds into "01:05"
     const formatTime = (totalSeconds) => {
       const mins = Math.floor(totalSeconds / 60);
       const secs = totalSeconds % 60;
@@ -100,92 +99,34 @@ export default function ExerciseDetailScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  image: {
-    width: '100%',
-    height: 300,
-    resizeMode: 'cover',
-  },
+  container: { flex: 1, backgroundColor: '#121212' },
+  image: { width: '100%', height: 350, resizeMode: 'cover', opacity: 0.9 },
   contentContainer: {
-    padding: 20,
-    marginTop: -20,
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    padding: 24,
+    marginTop: -30,
+    backgroundColor: '#121212',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 10,
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#eee',
-    marginVertical: 15,
-  },
-  sectionHeader: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#007AFF',
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  description: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#444',
-  },
-  // --- TIMER STYLES ---
-  timerSection: {
-    marginTop: 30,
-    marginBottom: 20,
-  },
+  title: { fontSize: 32, fontWeight: '800', color: '#FFFFFF', marginBottom: 10 },
+  separator: { height: 1, backgroundColor: '#333', marginVertical: 20 },
+  sectionHeader: { fontSize: 18, fontWeight: '700', color: '#0A84FF', marginBottom: 12, textTransform: 'uppercase', letterSpacing: 1 },
+  description: { fontSize: 16, lineHeight: 26, color: '#CCCCCC' },
+
+  timerSection: { marginTop: 40, marginBottom: 20 },
   timerCard: {
-    backgroundColor: '#f8f9fa',
-    padding: 20,
-    borderRadius: 15,
+    backgroundColor: '#1E1E1E',
+    padding: 25,
+    borderRadius: 20,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#eee',
+    borderColor: '#333',
   },
-  timerText: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: '#333',
-    fontVariant: ['tabular-nums'], // Keeps numbers monospaced (prevents jumping)
-    marginBottom: 20,
-  },
-  timerControls: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-around',
-  },
-  controlBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 30,
-    minWidth: 120,
-    justifyContent: 'center',
-  },
-  startBtn: {
-    backgroundColor: '#34C759', // Green
-  },
-  pauseBtn: {
-    backgroundColor: '#FF9500', // Orange
-  },
-  resetBtn: {
-    backgroundColor: '#e5e5ea',
-  },
-  btnText: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: '#fff',
-    marginLeft: 8,
-  }
+  timerText: { fontSize: 56, fontWeight: 'bold', color: '#FFFFFF', fontVariant: ['tabular-nums'], marginBottom: 24 },
+  timerControls: { flexDirection: 'row', width: '100%', justifyContent: 'space-around' },
+  controlBtn: { flexDirection: 'row', alignItems: 'center', paddingVertical: 14, paddingHorizontal: 24, borderRadius: 12, minWidth: 110, justifyContent: 'center' },
+  startBtn: { backgroundColor: '#32D74B' },
+  pauseBtn: { backgroundColor: '#FF9F0A' },
+  resetBtn: { backgroundColor: '#3A3A3C' },
+  btnText: { fontWeight: '700', fontSize: 16, color: '#fff', marginLeft: 8 },
 });

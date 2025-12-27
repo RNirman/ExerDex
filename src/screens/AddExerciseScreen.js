@@ -20,17 +20,14 @@ export default function AddExerciseScreen({ navigation }) {
   const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
 
   const pickImage = async () => {
-      // 3. Check if permission is granted
       if (!status?.granted) {
         const permissionResponse = await requestPermission();
-        // If user still says no, stop here
         if (!permissionResponse.granted) {
           Alert.alert("Permission Required", "We need access to your gallery to pick an image.");
           return;
         }
       }
 
-      // 4. If granted, open the library
       try {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: 'Images',
@@ -39,7 +36,7 @@ export default function AddExerciseScreen({ navigation }) {
           quality: 1,
         });
 
-        console.log("Image Picker Result:", result); // Debugging log
+        console.log("Image Picker Result:", result);
 
         if (!result.canceled) {
           setImageUri(result.assets[0].uri);
@@ -129,15 +126,72 @@ export default function AddExerciseScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#fff', flexGrow: 1 },
-  label: { fontSize: 16, fontWeight: 'bold', marginBottom: 8, marginTop: 10, color: '#333' },
-  input: { borderWidth: 1, borderColor: '#ddd', padding: 12, fontSize: 16, borderRadius: 8, backgroundColor: '#f9f9f9' },
-  textArea: { height: 100, textAlignVertical: 'top' },
-  imageContainer: { height: 200, backgroundColor: '#eee', borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginBottom: 15, overflow: 'hidden' },
+  container: {
+    padding: 24,
+    backgroundColor: '#121212', // Dark BG
+    flexGrow: 1
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: '700',
+    marginBottom: 8,
+    marginTop: 16,
+    color: '#AAAAAA', // Light Grey Labels
+    textTransform: 'uppercase',
+    letterSpacing: 0.5
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#333',
+    padding: 16,
+    fontSize: 16,
+    borderRadius: 12,
+    backgroundColor: '#1E1E1E', // Dark Input BG
+    color: '#FFFFFF' // White typing text
+  },
+  textArea: {
+    height: 120,
+    textAlignVertical: 'top'
+  },
+  imageContainer: {
+    height: 220,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#333',
+    borderStyle: 'dashed'
+  },
   previewImage: { width: '100%', height: '100%' },
-  placeholderText: { color: '#888' },
-  buttonOutline: { borderWidth: 2, borderColor: '#007AFF', padding: 15, borderRadius: 8, alignItems: 'center', marginBottom: 10 },
-  buttonOutlineText: { color: '#007AFF', fontWeight: 'bold', fontSize: 16 },
-  buttonFilled: { backgroundColor: '#007AFF', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
-  buttonFilledText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
+  placeholderText: { color: '#666' },
+
+  // Buttons
+  buttonOutline: {
+    borderWidth: 1,
+    borderColor: '#0A84FF',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginBottom: 12
+  },
+  buttonOutlineText: {
+    color: '#0A84FF',
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  buttonFilled: {
+    backgroundColor: '#0A84FF',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 8
+  },
+  buttonFilledText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16
+  },
 });
