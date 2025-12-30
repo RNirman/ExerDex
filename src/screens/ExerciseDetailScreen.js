@@ -8,9 +8,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useKeepAwake } from 'expo-keep-awake';
 
 export default function ExerciseDetailScreen({ route }) {
   const { exercise } = route.params;
+  useKeepAwake();
 
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
