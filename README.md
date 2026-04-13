@@ -13,11 +13,9 @@ A modern, offline-first mobile application built with React Native and Expo to c
 
 ## 📸 Screenshots
 
-*(Note: Add your screenshots to an `assets/screenshots` folder and update these links before publishing!)*
-
 | Home List | Add/Edit Exercise | Technique Details |
 | :---: | :---: | :---: |
-| <img src="./assets/homelist.jpeg" width="200" /> | <img src="./assets/add.jpeg" width="200" /> | <img src="./assets/details.jpeg" width="200" /> |
+| <img src="./assets/screenshots/homelist.jpeg" width="200" /> | <img src="./assets/screenshots/add.jpeg" width="200" /> | <img src="./assets/screenshots/details.jpeg" width="200" /> |
 
 ## 🛠️ Tech Stack
 
