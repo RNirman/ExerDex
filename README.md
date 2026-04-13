@@ -1,50 +1,44 @@
-# Welcome to your Expo app 👋
+# ExerDex 🏋️‍♂️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, offline-first mobile application built with React Native and Expo to catalog, organize, and practice fitness exercises and techniques. 
 
-## Get started
+## 🌟 Features
 
-1. Install dependencies
+* **Offline Storage:** Saves all exercises and images locally using `AsyncStorage` and `expo-file-system`. No internet connection required.
+* **Custom Image Picker:** Select visual references for exercises directly from the device gallery.
+* **Drag-and-Drop Reordering:** Easily organize your workout list by long-pressing and dragging exercises into your preferred order.
+* **Practice Timer:** A built-in stopwatch on the detail screen to time static holds (e.g., Planks) with "Keep Awake" functionality to prevent the screen from sleeping.
+* **Modern UI/UX:** Features a sleek Dark Theme with native gestures and smooth navigation.
+* **Full CRUD Functionality:** Create, Read, Update, and Delete exercise entries seamlessly.
 
+## 📸 Screenshots
+
+*(Note: Add your screenshots to an `assets/screenshots` folder and update these links before publishing!)*
+
+| Home List | Add/Edit Exercise | Technique Details |
+| :---: | :---: | :---: |
+| <img src="./assets/homelist.jpeg" width="200" /> | <img src="./assets/add.jpeg" width="200" /> | <img src="./assets/details.jpeg" width="200" /> |
+
+## 🛠️ Tech Stack
+
+* **Framework:** [React Native](https://reactnative.dev/)
+* **Platform/Build:** [Expo](https://expo.dev/)
+* **Navigation:** React Navigation (`@react-navigation/native-stack`)
+* **Local Data:** `@react-native-async-storage/async-storage`
+* **File Management:** `expo-file-system`, `expo-image-picker`
+* **Gestures & Animations:** `react-native-draggable-flatlist`, `react-native-reanimated`, `react-native-gesture-handler`
+* **Utilities:** `expo-keep-awake`, `@expo/vector-icons`
+
+## 🚀 Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+* Node.js installed on your machine.
+* Expo Go app installed on your iOS or Android device (for local testing).
+
+### Installation
+
+1. Clone the repository:
    ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   git clone [https://github.com/your-username/ExerDex.git](https://github.com/your-username/ExerDex.git)
